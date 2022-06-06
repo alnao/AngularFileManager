@@ -1,5 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, ViewChild } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+
+export function getRouterEvent(){
+  return inject(Router).events/*.pipe( filter(e => e instanceof NavigationEnd) )*/;
+}
 
 @Component({
   selector: 'app-root',
@@ -8,9 +13,11 @@ import { Component, inject, ViewChild } from '@angular/core';
 })
 export class AppComponent {
   http=inject(HttpClient);//prova di angular14 senza costruttore ma inject con il metodo
+  routerEvents=getRouterEvent();
   ngOnInit(){ 
     console.log("Http inject senza costruttore: ");
     console.log(this.http);
+    this.routerEvents.subscribe( console.log );
   }
 
   title = 'file-manage';
