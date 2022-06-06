@@ -103,5 +103,7 @@
       }
     }
   },
-  "defaultProject": "AngularFileManager"
+  "cli": {
+    "analytics": "a9befa0b-e3f4-45c9-945f-637fe31d4c89"
+  }
 }
